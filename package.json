@@ -11,16 +11,22 @@
     "postinstall": "mv gitignore .gitignore || true"
   },
   "dependencies": {
+    "@b1nd/b1nd-toastify": "^2.0.1",
+    "@b1nd/dds-web": "^0.2.5",
+    "@tanstack/react-query": "^5.90.12",
     "axios": "^1.7.7",
     "path": "^0.12.7",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.10.1",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/node": "^22.13.10",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
+    "@types/styled-components": "^5.1.36",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.0.0",
