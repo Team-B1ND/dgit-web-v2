@@ -1,5 +1,5 @@
-import Dgit_D from "@src/assets/DGIT_D.svg?react";
-import Dgit_GIT from "@src/assets/DGIT_GIT.svg?react";
+import Dgit_D from "@src/assets/logoAssets/DGIT_D.svg?react";
+import Dgit_GIT from "@src/assets/logoAssets/DGIT_GIT.svg?react";
 import * as S from './style';
 import { useThemeStore } from "@src/store/theme";
 import { ETheme } from "@src/enum/Theme/theme.enum";
