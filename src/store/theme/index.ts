@@ -15,7 +15,7 @@ export const useThemeStore = create<State>((set) => {
     theme: savedTheme,
     toggleThemeMode: () => {
       set((state) => {
-        const newMode = state.theme === ETheme.DARK ? ETheme.DARK : ETheme.LIGHT;
+        const newMode = state.theme === ETheme.DARK ? ETheme.LIGHT : ETheme.DARK;
         localStorage.setItem(THEME_KEY, newMode);
         return { theme: newMode };
       });
