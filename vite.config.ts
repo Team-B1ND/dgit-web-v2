@@ -1,30 +1,42 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    tanstackRouter({
+      target: "react",
+      autoCodeSplitting: true,
+    }),
+    react(),
+  ],
   build: {
-    outDir: 'build',
-    sourcemap: false, 
-    minify: 'esbuild', 
+    outDir: "build",
+    sourcemap: false,
+    minify: "esbuild",
     rollupOptions: {
       output: {
         manualChunks(id: string | string[]) {
-          if (id.includes('node_modules')) {
-            return 'vendor'; 
+          if (id.includes("node_modules")) {
+            return "vendor";
           }
         },
       },
+      external: ["styled-components"],
     },
   },
   resolve: {
     //추가
     alias: [
       {
-        find: '@src',
-        replacement: path.resolve(__dirname, 'src'),
+        find: "@src",
+        replacement: path.resolve(__dirname, "src"),
+      },
+      {
+        find: "@components",
+        replacement: path.resolve(__dirname, "src/components"),
       },
     ],
   },
