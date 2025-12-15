@@ -12,8 +12,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(react-dom@18.3.1(react@18.3.1))
       '@b1nd/dds-web':
-        specifier: ^0.2.5
-        version: 0.2.5(react-dom@18.3.1(react@18.3.1))(rollup@4.53.3)(typescript@5.6.3)
+        specifier: ^0.2.6
+        version: 0.2.6(react-dom@18.3.1(react@18.3.1))(rollup@4.53.3)(typescript@5.6.3)
       '@tanstack/react-query':
         specifier: ^5.90.12
         version: 5.90.12(react@18.3.1)
@@ -96,8 +96,8 @@ packages:
   '@b1nd/b1nd-toastify@2.0.1':
     resolution: {integrity: sha512-V9St3lTefi2vFHCpbkSWbrH9AtjmUcxyR90akFNlchH+AymxTpkdzWRfW2hOEIVgAYjG7VGJqy9pTotfuiaSCQ==}
 
-  '@b1nd/dds-web@0.2.5':
-    resolution: {integrity: sha512-MkeZ1BU3I2isbbPVjSOgwjWsmjYv1ghimPGZLaO4uFhDsVtaD71y2hLhTL2lwFw0IenQYW5yDnQZBz0gq4at1w==}
+  '@b1nd/dds-web@0.2.6':
+    resolution: {integrity: sha512-skLhNUjRz0t06C9138AxYk5jom4lBnl7aiQXg60QxVF0DiK6kdK7zyQB6URl21FSNlcXPb4mTT4ONiOXKGldAw==}
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -2746,7 +2746,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@b1nd/dds-web@0.2.5(react-dom@18.3.1(react@18.3.1))(rollup@4.53.3)(typescript@5.6.3)':
+  '@b1nd/dds-web@0.2.6(react-dom@18.3.1(react@18.3.1))(rollup@4.53.3)(typescript@5.6.3)':
     dependencies:
       '@rollup/plugin-image': 3.0.3(rollup@4.53.3)
       '@rollup/plugin-replace': 6.0.3(rollup@4.53.3)
