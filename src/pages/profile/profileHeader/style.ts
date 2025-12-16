@@ -1,4 +1,5 @@
 import { DodamShape, DodamTypography } from "@b1nd/dds-web";
+import { skeletonAnimtaion } from "@src/styles/skeletonAnimation";
 import styled from "styled-components";
 
 export const ProfileHeaderContainer = styled.div`
@@ -19,7 +20,7 @@ export const ProfileImage = styled.div<{ $profileImg: string }>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
+  ${skeletonAnimtaion}
 `;
 
 export const ProfileDataSection = styled.div`
