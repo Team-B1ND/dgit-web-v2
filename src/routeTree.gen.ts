@@ -8,8 +8,6 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
-
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Rank_rankLayoutRouteImport } from './routes/rank_/_rankLayout'
@@ -18,13 +16,6 @@ import { Route as Rank_rankLayoutStreakIndexRouteImport } from './routes/rank_/_
 import { Route as Rank_rankLayoutRepositoryIndexRouteImport } from './routes/rank_/_rankLayout/repository/index'
 import { Route as Rank_rankLayoutCommitIndexRouteImport } from './routes/rank_/_rankLayout/commit/index'
 
-const RankRouteImport = createFileRoute('/rank_')()
-
-const RankRoute = RankRouteImport.update({
-  id: '/rank_',
-  path: '/rank',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -78,7 +69,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/rank_': typeof RankRouteWithChildren
   '/rank_/_rankLayout': typeof Rank_rankLayoutRouteWithChildren
   '/rank_/_rankLayout/commit/': typeof Rank_rankLayoutCommitIndexRoute
   '/rank_/_rankLayout/repository/': typeof Rank_rankLayoutRepositoryIndexRoute
@@ -105,7 +95,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/rank_'
     | '/rank_/_rankLayout'
     | '/rank_/_rankLayout/commit/'
     | '/rank_/_rankLayout/repository/'
@@ -115,18 +104,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  RankRoute: typeof RankRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/rank_': {
-      id: '/rank_'
-      path: '/rank'
-      fullPath: '/rank'
-      preLoaderRoute: typeof RankRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -136,7 +117,7 @@ declare module '@tanstack/react-router' {
     }
     '/rank_/_rankLayout': {
       id: '/rank_/_rankLayout'
-      path: '/rank'
+      path: ''
       fullPath: '/rank'
       preLoaderRoute: typeof Rank_rankLayoutRouteImport
       parentRoute: typeof RankRoute
@@ -172,37 +153,8 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface Rank_rankLayoutRouteChildren {
-  Rank_rankLayoutCommitIndexRoute: typeof Rank_rankLayoutCommitIndexRoute
-  Rank_rankLayoutRepositoryIndexRoute: typeof Rank_rankLayoutRepositoryIndexRoute
-  Rank_rankLayoutStreakIndexRoute: typeof Rank_rankLayoutStreakIndexRoute
-  Rank_rankLayoutTotalIndexRoute: typeof Rank_rankLayoutTotalIndexRoute
-}
-
-const Rank_rankLayoutRouteChildren: Rank_rankLayoutRouteChildren = {
-  Rank_rankLayoutCommitIndexRoute: Rank_rankLayoutCommitIndexRoute,
-  Rank_rankLayoutRepositoryIndexRoute: Rank_rankLayoutRepositoryIndexRoute,
-  Rank_rankLayoutStreakIndexRoute: Rank_rankLayoutStreakIndexRoute,
-  Rank_rankLayoutTotalIndexRoute: Rank_rankLayoutTotalIndexRoute,
-}
-
-const Rank_rankLayoutRouteWithChildren = Rank_rankLayoutRoute._addFileChildren(
-  Rank_rankLayoutRouteChildren,
-)
-
-interface RankRouteChildren {
-  Rank_rankLayoutRoute: typeof Rank_rankLayoutRouteWithChildren
-}
-
-const RankRouteChildren: RankRouteChildren = {
-  Rank_rankLayoutRoute: Rank_rankLayoutRouteWithChildren,
-}
-
-const RankRouteWithChildren = RankRoute._addFileChildren(RankRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  RankRoute: RankRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
