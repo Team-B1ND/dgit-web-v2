@@ -7,7 +7,7 @@ const ProfileHeader = () => {
       <S.ProfileDataSection>
         <div>
           <p>name field</p>
-          <span>@github id field</span>
+          <a href={`https://github.com/${"github"}`} target='_blank'>@github id field</a>
         </div>
         <p>description field</p>
       </S.ProfileDataSection>

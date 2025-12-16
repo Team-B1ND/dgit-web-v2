@@ -33,7 +33,7 @@ export const ProfileDataSection = styled.div`
     > p {
       ${DodamTypography.Title1.Bold}
     }
-    > span {
+    > a {
       ${DodamTypography.Heading1.Medium}
       color: ${({ theme }) => theme.labelNeutral};
     }
