@@ -24,3 +24,8 @@ export const SidebarItem = styled(Link)<{ $selcted: string }>`
   background-color: ${({ theme, $selcted }) => $selcted === "true" ? theme.primaryNormal : ""};
   ${DodamShape.Medium}
 `
+
+export const SidebarFooter = styled.div`
+  display: flex;
+  gap: 8px;
+`
