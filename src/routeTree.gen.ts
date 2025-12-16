@@ -12,6 +12,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HonorIndexRouteImport } from './routes/honor/index'
 import { Route as Rank_rankLayoutRouteImport } from './routes/rank_/_rankLayout'
 import { Route as Rank_rankLayoutTotalIndexRouteImport } from './routes/rank_/_rankLayout/total/index'
 import { Route as Rank_rankLayoutStreakIndexRouteImport } from './routes/rank_/_rankLayout/streak/index'
@@ -28,6 +29,11 @@ const RankRoute = RankRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HonorIndexRoute = HonorIndexRouteImport.update({
+  id: '/honor/',
+  path: '/honor/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Rank_rankLayoutRoute = Rank_rankLayoutRouteImport.update({
@@ -62,6 +68,7 @@ const Rank_rankLayoutCommitIndexRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/rank': typeof Rank_rankLayoutRouteWithChildren
+  '/honor': typeof HonorIndexRoute
   '/rank/commit': typeof Rank_rankLayoutCommitIndexRoute
   '/rank/repository': typeof Rank_rankLayoutRepositoryIndexRoute
   '/rank/streak': typeof Rank_rankLayoutStreakIndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/rank': typeof Rank_rankLayoutRouteWithChildren
+  '/honor': typeof HonorIndexRoute
   '/rank/commit': typeof Rank_rankLayoutCommitIndexRoute
   '/rank/repository': typeof Rank_rankLayoutRepositoryIndexRoute
   '/rank/streak': typeof Rank_rankLayoutStreakIndexRoute
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/rank_': typeof RankRouteWithChildren
   '/rank_/_rankLayout': typeof Rank_rankLayoutRouteWithChildren
+  '/honor/': typeof HonorIndexRoute
   '/rank_/_rankLayout/commit/': typeof Rank_rankLayoutCommitIndexRoute
   '/rank_/_rankLayout/repository/': typeof Rank_rankLayoutRepositoryIndexRoute
   '/rank_/_rankLayout/streak/': typeof Rank_rankLayoutStreakIndexRoute
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/rank'
+    | '/honor'
     | '/rank/commit'
     | '/rank/repository'
     | '/rank/streak'
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/rank'
+    | '/honor'
     | '/rank/commit'
     | '/rank/repository'
     | '/rank/streak'
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/'
     | '/rank_'
     | '/rank_/_rankLayout'
+    | '/honor/'
     | '/rank_/_rankLayout/commit/'
     | '/rank_/_rankLayout/repository/'
     | '/rank_/_rankLayout/streak/'
@@ -116,6 +128,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   RankRoute: typeof RankRouteWithChildren
+  HonorIndexRoute: typeof HonorIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -132,6 +145,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/honor/': {
+      id: '/honor/'
+      path: '/honor'
+      fullPath: '/honor'
+      preLoaderRoute: typeof HonorIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rank_/_rankLayout': {
@@ -203,6 +223,7 @@ const RankRouteWithChildren = RankRoute._addFileChildren(RankRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   RankRoute: RankRouteWithChildren,
+  HonorIndexRoute: HonorIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
