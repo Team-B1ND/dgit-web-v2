@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react"
-import * as S from "./style";
 import { DodamSegmentedButton } from "@b1nd/dds-web";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
+import { PageLayoutContainer } from "@src/styles/pageContainer";
 
 const RankLayout = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate({ from: "/rank" })
@@ -21,16 +21,17 @@ const RankLayout = ({ children }: PropsWithChildren) => {
   ];
   
   return (
-    <S.RankLayoutContainer>
+    <PageLayoutContainer>
       <p>랭킹</p>
       <DodamSegmentedButton
+        width={480}
         num={section.length}
         type="block"
         data={section}
         onClick={(text) => navigate({to: section.find(item => item.text === text)?.value})}
       />
       {children}
-    </S.RankLayoutContainer>
+    </PageLayoutContainer>
   )
 }
 
