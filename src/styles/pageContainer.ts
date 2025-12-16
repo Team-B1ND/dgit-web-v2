@@ -1,7 +1,7 @@
 import { DodamShape, DodamTypography } from "@b1nd/dds-web";
 import styled from "styled-components";
 
-export const RankLayoutContainer = styled.div`
+export const PageLayoutContainer = styled.div`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -9,7 +9,8 @@ export const RankLayoutContainer = styled.div`
   background-color: ${({ theme }) => theme.backgroundNormal};
   ${DodamShape.Large};
   padding: 24px;
+  overflow: scroll;
   > p {
     ${DodamTypography.Heading1.Bold}
   }
-`
+`;

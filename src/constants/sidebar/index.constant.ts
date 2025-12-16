@@ -20,7 +20,7 @@ export const SIDEBAR_DATA: SidebarDataType = [
   },
   {
     text: "명예의 전당",
-    link: "/honor",
+    link: "/honor/weekly-commit",
     icon: People,
   },
   {

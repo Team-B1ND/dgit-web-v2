@@ -20,7 +20,7 @@ const Sidebar = () => {
         <S.SidebarItem 
           key={item.link}
           to={item.link} 
-          $selcted={(item.link === pathname).toString()}
+          $selcted={(item.link.includes(pathname.split("/")[1])).toString()}
           onClick={() => setSelected(item.text)}
         >
           {item.icon({ color: item.text === selcted ? "staticWhite" : "labelNormal"})}
