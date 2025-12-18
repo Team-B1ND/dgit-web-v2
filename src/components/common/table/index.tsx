@@ -19,7 +19,7 @@ interface Props {
  *    - 행 클릭시 해당 행의 idx값을 넘기는 onClick 함수
  */
 const Table = ({ keys, data, onRowClick = () => {} }: Props) => {
-  return (
+  return data.length !== 0 ? (
     <S.TableContainer>
       <S.TableHeader>
         {keys.map((item) => (
@@ -44,7 +44,11 @@ const Table = ({ keys, data, onRowClick = () => {} }: Props) => {
         </S.TableRow>
       ))}
     </S.TableContainer>
-  );
+  ) : (
+    <S.BlankTableContainer>
+      데이터가 존재하지 않습니다!
+    </S.BlankTableContainer>
+  )
 };
 
 export default Table;
