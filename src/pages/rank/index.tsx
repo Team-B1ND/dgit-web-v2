@@ -23,13 +23,15 @@ const RankLayout = ({ children }: PropsWithChildren) => {
   return (
     <PageLayoutContainer>
       <p>랭킹</p>
-      <DodamSegmentedButton
-        width={480}
-        num={section.length}
-        type="block"
-        data={section}
-        onClick={(text) => navigate({to: section.find(item => item.text === text)?.value})}
-      />
+      <div style={{ minHeight: "48px"}}>
+        <DodamSegmentedButton
+          width={480}
+          num={section.length}
+          type="block"
+          data={section}
+          onClick={(text) => navigate({to: section.find(item => item.text === text)?.value})}
+        />
+      </div>
       {children}
     </PageLayoutContainer>
   )

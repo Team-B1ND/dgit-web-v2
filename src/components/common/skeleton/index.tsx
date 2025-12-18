@@ -1,3 +1,4 @@
+import { skeletonAnimtaion } from "@src/styles/skeletonAnimation";
 import styled from "styled-components"
 
 type SkeletonProps = {
@@ -30,4 +31,5 @@ const SkeletonContainer = styled.div<{
   width: ${({ $width }) => $width};
   height: ${({ $height }) => $height};
   border-radius: ${({ $borderRadius }) => $borderRadius};
+  ${skeletonAnimtaion};
 `;

@@ -1,9 +1,16 @@
+import TableSkeleton from '@src/components/common/table/tableSkeleton';
+import TotalRank from '@src/pages/rank/total'
 import { createFileRoute } from '@tanstack/react-router'
+import { Suspense } from 'react'
 
 export const Route = createFileRoute('/rank_/_rankLayout/total/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return <div>Hello "/rank/_rankLayout/total/"!</div>
+  return (
+    <Suspense fallback={<TableSkeleton />}>
+      <TotalRank />
+    </Suspense>
+  );
 }
