@@ -3,6 +3,11 @@ import token from "../token/token";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, REQUEST_TOKEN_KEY } from "@src/constants/token.constants";
 
 const requestInterceptor = (config: InternalAxiosRequestConfig, url: string): InternalAxiosRequestConfig => {
+  // skipAuth가 true면 토큰 검증 및 주입 스킵
+  if (config.skipAuth) {
+    return config;
+  }
+
   if (typeof window !== "undefined") {
     const accessToken = token.getToken(ACCESS_TOKEN_KEY);
     const refreshToken = token.getToken(REFRESH_TOKEN_KEY);
