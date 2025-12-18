@@ -1,6 +1,5 @@
 import { SIDEBAR_DATA } from '@src/constants/sidebar/index.constant';
 import * as S from './style';
-import { useState } from 'react';
 import DgitLogo from '@src/components/common/logo';
 import ThemeController from '@src/components/common/layout/sidebar/themeController';
 import FlexWider from '@src/components/common/flexWider';
@@ -8,7 +7,6 @@ import GoDodamButton from '@src/components/common/layout/sidebar/goDodamButton';
 import { useRouterState } from '@tanstack/react-router';
 
 const Sidebar = () => {
-  const [selcted, setSelected] = useState(SIDEBAR_DATA[0].text);
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -21,9 +19,8 @@ const Sidebar = () => {
           key={item.link}
           to={item.link} 
           $selcted={(item.link.includes(pathname.split("/")[1])).toString()}
-          onClick={() => setSelected(item.text)}
         >
-          {item.icon({ color: item.text === selcted ? "staticWhite" : "labelNormal"})}
+          {item.icon({ color: item.link.includes(pathname.split("/")[1]) ? "staticWhite" : "labelNormal"})}
           {item.text}
         </S.SidebarItem>
       ))}
