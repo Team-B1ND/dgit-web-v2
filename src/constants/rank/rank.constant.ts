@@ -25,3 +25,12 @@ export const REPOSITORY_RANK_TABLE: [string, string][] = [
   ["Name", "144px"],
   ["Intro", "FULL"],
 ]
+
+export const STREAK_RANK_TABLE: [string, string][] = [
+  ["Rank", "96px"],
+  ["Max Streak", "144px"],
+  ["Profile", "96px"],
+  ["Github Id", "144px"],
+  ["Name", "144px"],
+  ["Intro", "FULL"],
+];
