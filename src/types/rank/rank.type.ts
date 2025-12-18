@@ -44,4 +44,7 @@ type RankTypeMap = {
   total: TotalRankType;
 };
 
+/**
+ * @description `"commit" | "repository" | "streak" | "total"` 을 제네릭으로 제공하면, 각 scope에 맞는 타입을 리턴합니다.
+ */
 export type GetRankType<K extends keyof RankTypeMap> = RankTypeMap[K];
