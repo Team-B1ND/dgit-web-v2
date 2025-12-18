@@ -1,3 +1,4 @@
+import TableSkeleton from '@src/components/common/table/tableSkeleton';
 import RepositoryRank from '@src/pages/rank/repository';
 import { createFileRoute } from '@tanstack/react-router'
 import { Suspense } from 'react';
@@ -8,7 +9,7 @@ export const Route = createFileRoute('/rank_/_rankLayout/repository/')({
 
 function RouteComponent() {
   return (
-    <Suspense fallback={<>loading....</>}>
+    <Suspense fallback={<TableSkeleton />}>
       <RepositoryRank />
     </Suspense>
   );
