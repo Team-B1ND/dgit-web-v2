@@ -32,3 +32,12 @@ export const TableCell = styled.div<{
   flex-grow: ${({ $width }) => $width === "FULL" ? "1" : ""};
   padding: 0 12px;
 `
+
+export const BlankTableContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  color: ${({ theme }) => theme.labelAssistive};
+`
