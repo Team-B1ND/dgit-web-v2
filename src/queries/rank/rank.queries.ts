@@ -26,4 +26,5 @@ export const useGetRankQuery = <T extends RankScope>(
     queryKey: QUERY_KEYS.rank.getRankByScope(scope),
     queryFn: () => getRankApi<T>(scope),
     ...options,
+    staleTime: 1000 * 60 * 5,
   });
