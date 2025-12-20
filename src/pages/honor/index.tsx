@@ -20,12 +20,14 @@ const HonorLayout = ({ children }: PropsWithChildren) => {
   return (
     <PageLayoutContainer>
       <p>명예의 전당</p>
-      <DodamSegmentedButton
-        num={section.length}
-        type="block"
-        data={section}
-        onClick={(text) => navigate({to: section.find(item => item.text === text)?.value})}
-      />
+      <div style={{ minWidth: "48px" }}>
+        <DodamSegmentedButton
+          num={section.length}
+          type="block"
+          data={section}
+          onClick={(text) => navigate({to: section.find(item => item.text === text)?.value})}
+        />
+      </div>
       {children}
     </PageLayoutContainer>
   )
