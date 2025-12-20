@@ -18,3 +18,10 @@ export interface WeeklyCommitsPageResponse {
   hasNext: boolean;
   hasPrevious: boolean;
 }
+
+export interface WeeklyCommitsRankerType {
+  githubName: string;
+  name: string;
+  avatarUrl: string;
+  firstPlaceCount: number;
+}

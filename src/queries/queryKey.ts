@@ -5,6 +5,7 @@ export const QUERY_KEYS = {
     getRankByScope: (scope: RankScope) => [`rank/${scope}`]
   },
   honor: {
-    getWeeklyCommits: () => [`honor/weeklyCommits`]
+    getWeeklyCommits: () => [`honor/weeklyCommits`],
+    getWeeklyCommitsRanker: () => [`honor/weeklyCommits/ranker`]
   }
 }
