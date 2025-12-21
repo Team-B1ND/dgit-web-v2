@@ -2,7 +2,6 @@ import axios, { AxiosError } from "axios";
 import token from "../token/token";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, REQUEST_TOKEN_KEY } from "@src/constants/token.constants";
 import customAxios from "./customAxios";
-import CONFIG from "@src/config/config.json";
 
 let isRefreshing = false;
 const refreshSubscribers: ((accessToken: string) => void)[] = [];
@@ -16,6 +15,8 @@ const addRefeshSubscriber = (callback: (accessToken: string) => void) => {
 };
 
 const ResponseHandler = async (error: AxiosError) => {
+  const serverUrl = import.meta.env.VITE_SERVER_URL;
+
   if (error.response) {
     const {
       config: originalRequest,
@@ -29,7 +30,7 @@ const ResponseHandler = async (error: AxiosError) => {
       isRefreshing = true;
 
       try {
-        const { data: newAccessToken } = await axios.post(`${CONFIG.server}/refresh`, {
+        const { data: newAccessToken } = await axios.post(`${serverUrl}/auth/refresh`, {
           refreshToken: usingAccessToken,
         }); //CHANGE YOUR API URL && BODY VALUE
         customAxios.defaults.headers.common[REQUEST_TOKEN_KEY] = `Bearer ${newAccessToken}`;
@@ -49,7 +50,7 @@ const ResponseHandler = async (error: AxiosError) => {
         console.error("Failed to refresh access token:", error);
         token.clearToken();
         window.alert("세션이 만료되었습니다.");
-        window.location.href = "/login";
+        window.location.href = "/rank/total";
       }
     }
   }
