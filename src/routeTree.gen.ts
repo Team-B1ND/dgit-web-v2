@@ -8,10 +8,9 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
-
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as Rank_rankLayoutRouteImport } from './routes/rank_/_rankLayout'
 import { Route as Honor_honorLayoutRouteImport } from './routes/honor_/_honorLayout'
 import { Route as Rank_rankLayoutTotalIndexRouteImport } from './routes/rank_/_rankLayout/total/index'
@@ -21,22 +20,14 @@ import { Route as Rank_rankLayoutCommitIndexRouteImport } from './routes/rank_/_
 import { Route as Honor_honorLayoutWeeklyProjectIndexRouteImport } from './routes/honor_/_honorLayout/weekly-project/index'
 import { Route as Honor_honorLayoutWeeklyCommitIndexRouteImport } from './routes/honor_/_honorLayout/weekly-commit/index'
 
-const RankRouteImport = createFileRoute('/rank_')()
-const HonorRouteImport = createFileRoute('/honor_')()
-
-const RankRoute = RankRouteImport.update({
-  id: '/rank_',
-  path: '/rank',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HonorRoute = HonorRouteImport.update({
-  id: '/honor_',
-  path: '/honor',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginIndexRoute = LoginIndexRouteImport.update({
+  id: '/login/',
+  path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Rank_rankLayoutRoute = Rank_rankLayoutRouteImport.update({
@@ -88,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/honor': typeof Honor_honorLayoutRouteWithChildren
   '/rank': typeof Rank_rankLayoutRouteWithChildren
+  '/login': typeof LoginIndexRoute
   '/honor/weekly-commit': typeof Honor_honorLayoutWeeklyCommitIndexRoute
   '/honor/weekly-project': typeof Honor_honorLayoutWeeklyProjectIndexRoute
   '/rank/commit': typeof Rank_rankLayoutCommitIndexRoute
@@ -99,6 +91,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/honor': typeof Honor_honorLayoutRouteWithChildren
   '/rank': typeof Rank_rankLayoutRouteWithChildren
+  '/login': typeof LoginIndexRoute
   '/honor/weekly-commit': typeof Honor_honorLayoutWeeklyCommitIndexRoute
   '/honor/weekly-project': typeof Honor_honorLayoutWeeklyProjectIndexRoute
   '/rank/commit': typeof Rank_rankLayoutCommitIndexRoute
@@ -109,10 +102,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/honor_': typeof HonorRouteWithChildren
   '/honor_/_honorLayout': typeof Honor_honorLayoutRouteWithChildren
-  '/rank_': typeof RankRouteWithChildren
   '/rank_/_rankLayout': typeof Rank_rankLayoutRouteWithChildren
+  '/login/': typeof LoginIndexRoute
   '/honor_/_honorLayout/weekly-commit/': typeof Honor_honorLayoutWeeklyCommitIndexRoute
   '/honor_/_honorLayout/weekly-project/': typeof Honor_honorLayoutWeeklyProjectIndexRoute
   '/rank_/_rankLayout/commit/': typeof Rank_rankLayoutCommitIndexRoute
@@ -126,6 +118,7 @@ export interface FileRouteTypes {
     | '/'
     | '/honor'
     | '/rank'
+    | '/login'
     | '/honor/weekly-commit'
     | '/honor/weekly-project'
     | '/rank/commit'
@@ -137,6 +130,7 @@ export interface FileRouteTypes {
     | '/'
     | '/honor'
     | '/rank'
+    | '/login'
     | '/honor/weekly-commit'
     | '/honor/weekly-project'
     | '/rank/commit'
@@ -146,10 +140,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/honor_'
     | '/honor_/_honorLayout'
-    | '/rank_'
     | '/rank_/_rankLayout'
+    | '/login/'
     | '/honor_/_honorLayout/weekly-commit/'
     | '/honor_/_honorLayout/weekly-project/'
     | '/rank_/_rankLayout/commit/'
@@ -160,26 +153,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  HonorRoute: typeof HonorRouteWithChildren
-  RankRoute: typeof RankRouteWithChildren
+  LoginIndexRoute: typeof LoginIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/rank_': {
-      id: '/rank_'
-      path: '/rank'
-      fullPath: '/rank'
-      preLoaderRoute: typeof RankRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/honor_': {
-      id: '/honor_'
-      path: '/honor'
-      fullPath: '/honor'
-      preLoaderRoute: typeof HonorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -187,16 +165,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login/': {
+      id: '/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rank_/_rankLayout': {
       id: '/rank_/_rankLayout'
-      path: '/rank'
+      path: ''
       fullPath: '/rank'
       preLoaderRoute: typeof Rank_rankLayoutRouteImport
       parentRoute: typeof RankRoute
     }
     '/honor_/_honorLayout': {
       id: '/honor_/_honorLayout'
-      path: '/honor'
+      path: ''
       fullPath: '/honor'
       preLoaderRoute: typeof Honor_honorLayoutRouteImport
       parentRoute: typeof HonorRoute
@@ -246,63 +231,9 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface Honor_honorLayoutRouteChildren {
-  Honor_honorLayoutWeeklyCommitIndexRoute: typeof Honor_honorLayoutWeeklyCommitIndexRoute
-  Honor_honorLayoutWeeklyProjectIndexRoute: typeof Honor_honorLayoutWeeklyProjectIndexRoute
-}
-
-const Honor_honorLayoutRouteChildren: Honor_honorLayoutRouteChildren = {
-  Honor_honorLayoutWeeklyCommitIndexRoute:
-    Honor_honorLayoutWeeklyCommitIndexRoute,
-  Honor_honorLayoutWeeklyProjectIndexRoute:
-    Honor_honorLayoutWeeklyProjectIndexRoute,
-}
-
-const Honor_honorLayoutRouteWithChildren =
-  Honor_honorLayoutRoute._addFileChildren(Honor_honorLayoutRouteChildren)
-
-interface HonorRouteChildren {
-  Honor_honorLayoutRoute: typeof Honor_honorLayoutRouteWithChildren
-}
-
-const HonorRouteChildren: HonorRouteChildren = {
-  Honor_honorLayoutRoute: Honor_honorLayoutRouteWithChildren,
-}
-
-const HonorRouteWithChildren = HonorRoute._addFileChildren(HonorRouteChildren)
-
-interface Rank_rankLayoutRouteChildren {
-  Rank_rankLayoutCommitIndexRoute: typeof Rank_rankLayoutCommitIndexRoute
-  Rank_rankLayoutRepositoryIndexRoute: typeof Rank_rankLayoutRepositoryIndexRoute
-  Rank_rankLayoutStreakIndexRoute: typeof Rank_rankLayoutStreakIndexRoute
-  Rank_rankLayoutTotalIndexRoute: typeof Rank_rankLayoutTotalIndexRoute
-}
-
-const Rank_rankLayoutRouteChildren: Rank_rankLayoutRouteChildren = {
-  Rank_rankLayoutCommitIndexRoute: Rank_rankLayoutCommitIndexRoute,
-  Rank_rankLayoutRepositoryIndexRoute: Rank_rankLayoutRepositoryIndexRoute,
-  Rank_rankLayoutStreakIndexRoute: Rank_rankLayoutStreakIndexRoute,
-  Rank_rankLayoutTotalIndexRoute: Rank_rankLayoutTotalIndexRoute,
-}
-
-const Rank_rankLayoutRouteWithChildren = Rank_rankLayoutRoute._addFileChildren(
-  Rank_rankLayoutRouteChildren,
-)
-
-interface RankRouteChildren {
-  Rank_rankLayoutRoute: typeof Rank_rankLayoutRouteWithChildren
-}
-
-const RankRouteChildren: RankRouteChildren = {
-  Rank_rankLayoutRoute: Rank_rankLayoutRouteWithChildren,
-}
-
-const RankRouteWithChildren = RankRoute._addFileChildren(RankRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  HonorRoute: HonorRouteWithChildren,
-  RankRoute: RankRouteWithChildren,
+  LoginIndexRoute: LoginIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
