@@ -1,4 +1,3 @@
-import CONFIG from "@src/config/config.json";
 import axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from "axios";
 import requestInterceptor from "./requestInterceptor";
 import ResponseHandler from "./responseInterceptor";
@@ -13,7 +12,7 @@ declare module "axios" {
 }
 
 const axiosRequestConfig: AxiosRequestConfig = {
-  baseURL: CONFIG.server,
+  baseURL: import.meta.env.VITE_SERVER_URL,
 };
 
 const customAxios = axios.create(axiosRequestConfig);
