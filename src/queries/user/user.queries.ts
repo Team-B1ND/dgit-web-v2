@@ -2,12 +2,12 @@ import { getUserGithubAccountApi, getUserProfileApi } from "@src/api/user/user.a
 import { QUERY_KEYS } from "@src/queries/queryKey";
 import { BaseResponse } from "@src/types/baseResponse";
 import { UserGithubAccountType, UserProfileType } from "@src/types/user/user.type";
-import { useSuspenseQuery, UseSuspenseQueryOptions } from "@tanstack/react-query";
+import { useQuery, UseQueryOptions, useSuspenseQuery, UseSuspenseQueryOptions } from "@tanstack/react-query";
 
 export const useGetUserProfileQuery = (
   id: number,
   options?: Partial<
-    UseSuspenseQueryOptions<
+    UseQueryOptions<
       BaseResponse<UserProfileType>,
       Error,
       BaseResponse<UserProfileType>,
@@ -15,7 +15,7 @@ export const useGetUserProfileQuery = (
     >
   >
 ) =>
-  useSuspenseQuery({
+  useQuery({
     queryKey: QUERY_KEYS.user.getUserProfile(id),
     queryFn: () => getUserProfileApi(id),
     ...options,

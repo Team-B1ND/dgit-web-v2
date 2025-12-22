@@ -2,6 +2,7 @@ export interface UserProfileType {
   username: string;
   name: string;
   bio: string;
+  avatarUrl: string;
   todayCommits: number;
   weekCommits: number;
   totalCommits: number;
