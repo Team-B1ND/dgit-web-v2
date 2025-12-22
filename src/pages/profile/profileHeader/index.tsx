@@ -1,11 +1,10 @@
-import Skeleton from '@src/components/common/skeleton';
 import * as S from './style'
 
 interface ProfileHeaderProps {
-  name?: string;
-  username?: string;
-  bio?: string;
-  avatarUrl?: string;
+  name: string;
+  username: string;
+  bio: string;
+  avatarUrl: string;
 }
 
 const ProfileHeader = ({
@@ -14,7 +13,7 @@ const ProfileHeader = ({
   bio,
   avatarUrl,
 }: ProfileHeaderProps) => {
-  return (name && username && bio && avatarUrl) ? (
+  return (
     <S.ProfileHeaderContainer>
       <S.ProfileImage $profileImg={avatarUrl}/>
       <S.ProfileDataSection>
@@ -25,9 +24,7 @@ const ProfileHeader = ({
         <p>{bio ?? "자기소개가 없습니다."}</p>
       </S.ProfileDataSection>
     </S.ProfileHeaderContainer>
-  ) : (
-    <Skeleton width='100%' height='176px' borderRadius='18px' />
-  )
+  );
 }
 
 export default ProfileHeader

@@ -2,7 +2,7 @@ import { getUserGithubAccountApi, getUserProfileApi } from "@src/api/user/user.a
 import { QUERY_KEYS } from "@src/queries/queryKey";
 import { BaseResponse } from "@src/types/baseResponse";
 import { UserGithubAccountType, UserProfileType } from "@src/types/user/user.type";
-import { useQuery, UseQueryOptions, useSuspenseQuery, UseSuspenseQueryOptions } from "@tanstack/react-query";
+import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 
 export const useGetUserProfileQuery = (
   id: number,
@@ -24,7 +24,7 @@ export const useGetUserProfileQuery = (
 
 export const useGetUserGithubAccountQuery = (
   options?: Partial<
-    UseSuspenseQueryOptions<
+    UseQueryOptions<
       BaseResponse<UserGithubAccountType[]>,
       Error,
       BaseResponse<UserGithubAccountType[]>,
@@ -32,7 +32,7 @@ export const useGetUserGithubAccountQuery = (
     >
   >
 ) =>
-  useSuspenseQuery({
+  useQuery({
     queryKey: QUERY_KEYS.user.getUserGithubAccount(),
     queryFn: () => getUserGithubAccountApi(),
     ...options,
