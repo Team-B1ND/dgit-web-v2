@@ -10,5 +10,6 @@ export const QUERY_KEYS = {
   },
   user: {
     getUserProfile: (id: number) => [`/stats/user`, id],
+    getUserGithubAccount: () => [`/github/me`],
   },
 };

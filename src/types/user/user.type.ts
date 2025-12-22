@@ -12,3 +12,10 @@ export interface UserProfileType {
   level: number;
   updatedAt: string;
 }
+
+export interface UserGithubAccountType {
+  id: number;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+}
