@@ -12,7 +12,9 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectIndexRouteImport } from './routes/project/index'
 import { Route as ProfileIndexRouteImport } from './routes/profile/index'
+import { Route as MissionIndexRouteImport } from './routes/mission/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as Rank_rankLayoutRouteImport } from './routes/rank_/_rankLayout'
 import { Route as Honor_honorLayoutRouteImport } from './routes/honor_/_honorLayout'
@@ -41,9 +43,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectIndexRoute = ProjectIndexRouteImport.update({
+  id: '/project/',
+  path: '/project/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileIndexRoute = ProfileIndexRouteImport.update({
   id: '/profile/',
   path: '/profile/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionIndexRoute = MissionIndexRouteImport.update({
+  id: '/mission/',
+  path: '/mission/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginIndexRoute = LoginIndexRouteImport.update({
@@ -101,7 +113,9 @@ export interface FileRoutesByFullPath {
   '/honor': typeof Honor_honorLayoutRouteWithChildren
   '/rank': typeof Rank_rankLayoutRouteWithChildren
   '/login': typeof LoginIndexRoute
+  '/mission': typeof MissionIndexRoute
   '/profile': typeof ProfileIndexRoute
+  '/project': typeof ProjectIndexRoute
   '/honor/weekly-commit': typeof Honor_honorLayoutWeeklyCommitIndexRoute
   '/honor/weekly-project': typeof Honor_honorLayoutWeeklyProjectIndexRoute
   '/rank/commit': typeof Rank_rankLayoutCommitIndexRoute
@@ -114,7 +128,9 @@ export interface FileRoutesByTo {
   '/honor': typeof Honor_honorLayoutRouteWithChildren
   '/rank': typeof Rank_rankLayoutRouteWithChildren
   '/login': typeof LoginIndexRoute
+  '/mission': typeof MissionIndexRoute
   '/profile': typeof ProfileIndexRoute
+  '/project': typeof ProjectIndexRoute
   '/honor/weekly-commit': typeof Honor_honorLayoutWeeklyCommitIndexRoute
   '/honor/weekly-project': typeof Honor_honorLayoutWeeklyProjectIndexRoute
   '/rank/commit': typeof Rank_rankLayoutCommitIndexRoute
@@ -130,7 +146,9 @@ export interface FileRoutesById {
   '/rank_': typeof RankRouteWithChildren
   '/rank_/_rankLayout': typeof Rank_rankLayoutRouteWithChildren
   '/login/': typeof LoginIndexRoute
+  '/mission/': typeof MissionIndexRoute
   '/profile/': typeof ProfileIndexRoute
+  '/project/': typeof ProjectIndexRoute
   '/honor_/_honorLayout/weekly-commit/': typeof Honor_honorLayoutWeeklyCommitIndexRoute
   '/honor_/_honorLayout/weekly-project/': typeof Honor_honorLayoutWeeklyProjectIndexRoute
   '/rank_/_rankLayout/commit/': typeof Rank_rankLayoutCommitIndexRoute
@@ -145,7 +163,9 @@ export interface FileRouteTypes {
     | '/honor'
     | '/rank'
     | '/login'
+    | '/mission'
     | '/profile'
+    | '/project'
     | '/honor/weekly-commit'
     | '/honor/weekly-project'
     | '/rank/commit'
@@ -158,7 +178,9 @@ export interface FileRouteTypes {
     | '/honor'
     | '/rank'
     | '/login'
+    | '/mission'
     | '/profile'
+    | '/project'
     | '/honor/weekly-commit'
     | '/honor/weekly-project'
     | '/rank/commit'
@@ -173,7 +195,9 @@ export interface FileRouteTypes {
     | '/rank_'
     | '/rank_/_rankLayout'
     | '/login/'
+    | '/mission/'
     | '/profile/'
+    | '/project/'
     | '/honor_/_honorLayout/weekly-commit/'
     | '/honor_/_honorLayout/weekly-project/'
     | '/rank_/_rankLayout/commit/'
@@ -187,7 +211,9 @@ export interface RootRouteChildren {
   HonorRoute: typeof HonorRouteWithChildren
   RankRoute: typeof RankRouteWithChildren
   LoginIndexRoute: typeof LoginIndexRoute
+  MissionIndexRoute: typeof MissionIndexRoute
   ProfileIndexRoute: typeof ProfileIndexRoute
+  ProjectIndexRoute: typeof ProjectIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -213,11 +239,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/project/': {
+      id: '/project/'
+      path: '/project'
+      fullPath: '/project'
+      preLoaderRoute: typeof ProjectIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile/': {
       id: '/profile/'
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mission/': {
+      id: '/mission/'
+      path: '/mission'
+      fullPath: '/mission'
+      preLoaderRoute: typeof MissionIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login/': {
@@ -344,7 +384,9 @@ const rootRouteChildren: RootRouteChildren = {
   HonorRoute: HonorRouteWithChildren,
   RankRoute: RankRouteWithChildren,
   LoginIndexRoute: LoginIndexRoute,
+  MissionIndexRoute: MissionIndexRoute,
   ProfileIndexRoute: ProfileIndexRoute,
+  ProjectIndexRoute: ProjectIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
