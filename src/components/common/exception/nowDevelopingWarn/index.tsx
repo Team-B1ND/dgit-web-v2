@@ -1,8 +1,14 @@
+import { DodamShape } from "@b1nd/dds-web";
 import styled from "styled-components";
 
-const NowDevelopingWarn = () => {
+interface NowDevelopingWarnProps {
+  background?: boolean
+}
+const NowDevelopingWarn = ({
+  background = false
+}: NowDevelopingWarnProps) => {
   return (
-    <NowDevelopingWarnContainer>
+    <NowDevelopingWarnContainer $background={background.toString()}>
       현재 개발중인 기능입니다.
     </NowDevelopingWarnContainer>
   )
@@ -10,7 +16,9 @@ const NowDevelopingWarn = () => {
 
 export default NowDevelopingWarn
 
-const NowDevelopingWarnContainer = styled.div`
+const NowDevelopingWarnContainer = styled.div<{
+  $background: string
+}>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,4 +26,6 @@ const NowDevelopingWarnContainer = styled.div`
   width: 100%;
   flex-grow: 1;
   color: ${({ theme }) => theme.labelAssistive};
+  ${DodamShape.Large};
+  background-color: ${({ $background, theme }) => $background === "true" ? theme.backgroundNormal : ""};
 `;
