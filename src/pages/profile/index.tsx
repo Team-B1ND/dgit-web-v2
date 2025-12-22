@@ -1,49 +1,61 @@
 import ProfileHeader from '@src/pages/profile/profileHeader'
 import * as S from './style'
+import { useGetUserProfile } from '@src/hooks/user';
+import { PROFILE_RECORD_SECTIONS, PROFILE_BIG_RECORDS, LEVEL_DUMMY_DATA } from '@src/constants/user/user.constant';
 
 const ProfilePage = () => {
+  const { userProfileData: data } = useGetUserProfile();
+  const profile = data?.data;
+
+  const getRecordValue = (key: string | null) => {
+    if (!key || !profile) return 0;
+    return profile[key as keyof typeof profile] ?? 0;
+  };
+
+  const getBigRecordMainValue = (key: string | null) => {
+    if (!key) return LEVEL_DUMMY_DATA.level;
+    if (!profile) return 0;
+    return profile[key as keyof typeof profile] ?? 0;
+  };
+
+  const renderBigRecordSub = (subType: 'percentage' | 'exp') => {
+    if (subType === 'exp') {
+      return `${LEVEL_DUMMY_DATA.currentExp} / ${LEVEL_DUMMY_DATA.maxExp} EXP`;
+    }
+    // 랭킹 퍼센트 계산 로직 (임시로 24% 고정)
+    return `상위 24%`;
+  };
+
   return (
     <S.ProfileLayoutContainer>
-      <ProfileHeader />
+      <ProfileHeader
+        name={profile?.name}
+        username={profile?.username}
+        bio={profile?.bio}
+        avatarUrl={profile?.avatarUrl}
+      />
       <S.ProfileMainContainer>
         <S.ProfileRecordContainer>
-          <S.ProfileRecordItem>
-            <S.ProfileRecordRow>
-              <p>오늘의 커밋</p>
-              <span>{0}회</span>
-            </S.ProfileRecordRow>
-            <S.ProfileRecordRow>
-              <p>이번주 커밋</p>
-              <span>{0}회</span>
-            </S.ProfileRecordRow>
-          </S.ProfileRecordItem>
-          <S.ProfileRecordItem>
-            <p>기록</p>
-            <S.ProfileRecordRow>
-              <p>레포지토리</p>
-              <span>{0}개</span>
-            </S.ProfileRecordRow>
-            <S.ProfileRecordRow>
-              <p>총 커밋</p>
-              <span>{0}커밋</span>
-            </S.ProfileRecordRow>
-            <S.ProfileRecordRow>
-              <p>최장 스트릭</p>
-              <span>{0}일</span>
-            </S.ProfileRecordRow>
-          </S.ProfileRecordItem>
+          {PROFILE_RECORD_SECTIONS.map((section, sectionIndex) => (
+            <S.ProfileRecordItem key={sectionIndex}>
+              {section.title && <p>{section.title}</p>}
+              {section.items.map((item, itemIndex) => (
+                <S.ProfileRecordRow key={itemIndex}>
+                  <p>{item.label}</p>
+                  <span>{getRecordValue(item.key)}{item.unit}</span>
+                </S.ProfileRecordRow>
+              ))}
+            </S.ProfileRecordItem>
+          ))}
         </S.ProfileRecordContainer>
         <S.ProfileBigRecordContainer>
-          <S.ProfileBigRecordItem>
-            <p>랭킹</p>
-            <div>{120}위</div>
-            <span>상위 {24}%</span>
-          </S.ProfileBigRecordItem>
-          <S.ProfileBigRecordItem>
-            <p>레벨</p>
-            <div>{20}LV</div>
-            <span>{1000} / {2400} EXP</span>
-          </S.ProfileBigRecordItem>
+          {PROFILE_BIG_RECORDS.map((record, index) => (
+            <S.ProfileBigRecordItem key={index}>
+              <p>{record.title}</p>
+              <div>{getBigRecordMainValue(record.key)}{record.mainUnit}</div>
+              <span>{renderBigRecordSub(record.subType)}</span>
+            </S.ProfileBigRecordItem>
+          ))}
         </S.ProfileBigRecordContainer>
       </S.ProfileMainContainer>
     </S.ProfileLayoutContainer>
