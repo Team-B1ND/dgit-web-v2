@@ -1,9 +1,10 @@
 import { DodamShape } from "@b1nd/dds-web";
 import styled from "styled-components";
 
-export const GoDodamButtonContainer = styled.a`
+export const IconButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   padding: 12px;
   text-decoration: none;
