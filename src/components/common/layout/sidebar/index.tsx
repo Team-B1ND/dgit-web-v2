@@ -5,6 +5,7 @@ import ThemeController from '@src/components/common/layout/sidebar/themeControll
 import FlexWider from '@src/components/common/flexWider';
 import GoDodamButton from '@src/components/common/layout/sidebar/goDodamButton';
 import { useRouterState } from '@tanstack/react-router';
+import LogoutButton from '@src/components/common/layout/sidebar/logoutButton';
 
 const Sidebar = () => {
   const pathname = useRouterState({
@@ -13,24 +14,29 @@ const Sidebar = () => {
 
   return (
     <S.SidebarContainer>
-      <DgitLogo width='96px' margin='8px'/>
-      {SIDEBAR_DATA.map(item => (
-        <S.SidebarItem 
+      <DgitLogo width="96px" margin="8px" />
+      {SIDEBAR_DATA.map((item) => (
+        <S.SidebarItem
           key={item.link}
-          to={item.link} 
-          $selcted={(item.link.includes(pathname.split("/")[1])).toString()}
+          to={item.link}
+          $selcted={item.link.includes(pathname.split("/")[1]).toString()}
         >
-          {item.icon({ color: item.link.includes(pathname.split("/")[1]) ? "staticWhite" : "labelNormal"})}
+          {item.icon({
+            color: item.link.includes(pathname.split("/")[1])
+              ? "staticWhite"
+              : "labelNormal",
+          })}
           {item.text}
         </S.SidebarItem>
       ))}
-      <FlexWider/>
+      <FlexWider />
       <S.SidebarFooter>
         <ThemeController />
         <GoDodamButton />
+        <LogoutButton />
       </S.SidebarFooter>
     </S.SidebarContainer>
-  )
+  );
 }
 
 export default Sidebar

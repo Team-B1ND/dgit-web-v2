@@ -27,5 +27,5 @@ export const SidebarItem = styled(Link)<{ $selcted: string }>`
 
 export const SidebarFooter = styled.div`
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
 `

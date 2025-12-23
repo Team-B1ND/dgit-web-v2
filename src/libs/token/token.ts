@@ -1,3 +1,7 @@
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@src/constants/token.constants";
+// import Cookies from "js-cookie";
+import cookie from "js-cookie";
+
 //토큰 저장을 쿠키에서 합니다
 class Token {
 
@@ -19,7 +23,8 @@ class Token {
   }
 
   public clearToken() {
-    document.cookie = "max-age=0";
+    cookie.remove(ACCESS_TOKEN_KEY);
+    cookie.remove(REFRESH_TOKEN_KEY);
   }
 }
 
