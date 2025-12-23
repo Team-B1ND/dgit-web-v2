@@ -1,6 +1,6 @@
 import ProfileHeader from '@src/pages/profile/profileHeader'
 import * as S from './style'
-import { useGetUserProfile } from '@src/hooks/user';
+import { useGetUserProfile } from '@src/hooks/user/useGetUserProfile';
 import { PROFILE_RECORD_SECTIONS, PROFILE_BIG_RECORDS, LEVEL_DUMMY_DATA } from '@src/constants/user/user.constant';
 import Skeleton from '@src/components/common/skeleton';
 
