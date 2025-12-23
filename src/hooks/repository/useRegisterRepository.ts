@@ -1,3 +1,4 @@
+import { B1ndToast } from "@b1nd/b1nd-toastify";
 import { registerRepositoryApi } from "@src/api/repository/repository.api";
 import { RegisterRepositoryType } from "@src/types/repository/repository.type";
 import { ChangeEvent, useState } from "react"
@@ -24,8 +25,9 @@ export const useRegisterRepositroy = () => {
     try {
       setIsLoading(true);
       await registerRepositoryApi({ ...repoData, githubAccountId: 1 });
+      B1ndToast.showSuccess("등록 신청에 성공했습니다. 관리자의 승인 후 랭킹에 등재됩니다.")
     } catch {
-      alert("오류가 발생해 등록에 실패했습니다, 재시도해주세요")
+      B1ndToast.showError("오류가 발생해 등록 신청에 실패했습니다, 재시도해주세요")
       setIsLoading(false);
     } finally {
       setIsLoading(false);
