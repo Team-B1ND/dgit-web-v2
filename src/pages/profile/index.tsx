@@ -25,7 +25,9 @@ const ProfilePage = () => {
       return `${LEVEL_DUMMY_DATA.currentExp} / ${LEVEL_DUMMY_DATA.maxExp} EXP`;
     }
     // 랭킹 퍼센트 계산 로직 (임시로 24% 고정)
-    return `상위 24%`;
+    if (subType === 'percentage') {
+      return `상위 ${profile?.percentile}%`
+    }
   };
 
   if (!haveAccount) {

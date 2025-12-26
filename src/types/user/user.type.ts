@@ -11,6 +11,7 @@ export interface UserProfileType {
   currentStreak: number;
   ranking: number;
   level: number;
+  percentile: number;
   updatedAt: string;
 }
 
