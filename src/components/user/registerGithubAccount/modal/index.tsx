@@ -39,7 +39,7 @@ const RegisterGithubAccountModal = ({ close, isOpen }: ModalProps) => {
             size="Medium"
             text="등록"
             textTheme="staticWhite"
-            onClick={registerUsername}
+            onClick={() => registerUsername(close)}
             enabled={!isLoading && username.length !== 0}
           />
         </ModalButtonsContainer>
@@ -59,7 +59,8 @@ const ModalContainer = styled.div`
   ${DodamShape.Large};
   background-color: ${({ theme }) => theme.backgroundNormal};
   > p {
-    ${DodamTypography.Heading1.Bold}
+    ${DodamTypography.Heading1.Bold};
+    color: ${({ theme }) => theme.labelNormal};
   }
 `;
 

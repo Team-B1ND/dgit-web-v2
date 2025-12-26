@@ -3,9 +3,10 @@ import * as S from './style'
 import { useGetUserProfile } from '@src/hooks/user/useGetUserProfile';
 import { PROFILE_RECORD_SECTIONS, PROFILE_BIG_RECORDS, LEVEL_DUMMY_DATA } from '@src/constants/user/user.constant';
 import Skeleton from '@src/components/common/skeleton';
+import RegisterGithubAccount from '@src/components/user/registerGithubAccount';
 
 const ProfilePage = () => {
-  const { userProfileData: data, isLoading } = useGetUserProfile();
+  const { userProfileData: data, isLoading, haveAccount } = useGetUserProfile();
   const profile = data?.data;
 
   const getRecordValue = (key: string | null) => {
@@ -26,6 +27,10 @@ const ProfilePage = () => {
     // 랭킹 퍼센트 계산 로직 (임시로 24% 고정)
     return `상위 24%`;
   };
+
+  if (!haveAccount) {
+    return <RegisterGithubAccount background/>
+  }
 
   return !isLoading ? (
     <S.ProfileLayoutContainer>
