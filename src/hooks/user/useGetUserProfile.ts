@@ -7,6 +7,7 @@ export const useGetUserProfile = () => {
   
   return {
     userProfileData,
-    isLoading: isAccountLoading || isUserProfileLoading
+    isLoading: isAccountLoading || isUserProfileLoading,
+    haveAccount: !!userId
   }
 }
