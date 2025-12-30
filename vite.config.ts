@@ -15,7 +15,6 @@ export default defineConfig({
     svgr(),
   ],
   build: {
-    outDir: "build",
     sourcemap: false,
     minify: "esbuild",
     rollupOptions: {
