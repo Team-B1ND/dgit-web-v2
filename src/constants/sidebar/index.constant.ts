@@ -3,34 +3,34 @@ import { IconType } from "@src/types/icon.type";
 
 export type SidebarDataType = {
   text: string;
-  link: string;
+  link: string[];
   icon: IconType;
 }[]
 
 export const SIDEBAR_DATA: SidebarDataType = [
   {
     text: "랭킹",
-    link: "/rank/total",
+    link: ["/rank/total", "/rank", "/"],
     icon: Chart,
   },
   {
     text: "마이페이지",
-    link: "/profile",
+    link: ["/profile"],
     icon: Person,
   },
   {
     text: "명예의 전당",
-    link: "/honor/weekly-commit",
+    link: ["/honor/weekly-commit", "/honor"],
     icon: People,
   },
   {
     text: "미션",
-    link: "/mission",
+    link: ["/mission"],
     icon: Bell,
   },
   {
     text: "프로젝트",
-    link: "/project",
+    link: ["/project"],
     icon: Dev,
   },
 ];

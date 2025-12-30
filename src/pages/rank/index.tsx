@@ -14,7 +14,7 @@ const RankLayout = ({ children }: PropsWithChildren) => {
     isAtv: boolean;
     value?: string;
   }[] = [
-    { text: "통합", isAtv: pathname === "/rank/total", value: "/rank/total" },
+    { text: "통합", isAtv: pathname === "/rank/total" || pathname === "/", value: "/rank/total" },
     { text: "커밋", isAtv: pathname === "/rank/commit", value: "/rank/commit" },
     { text: "레포지토리", isAtv: pathname === "/rank/repository", value: "/rank/repository" },
     { text: "최장 스트릭", isAtv: pathname === "/rank/streak", value: "/rank/streak" },

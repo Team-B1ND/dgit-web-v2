@@ -17,12 +17,12 @@ const Sidebar = () => {
       <DgitLogo width="96px" margin="8px" />
       {SIDEBAR_DATA.map((item) => (
         <S.SidebarItem
-          key={item.link}
-          to={item.link}
-          $selcted={item.link.includes(pathname.split("/")[1]).toString()}
+          key={item.link[0]}
+          to={item.link[0]}
+          $selcted={item.link.includes("/" + pathname.split("/")[1]).toString()}
         >
           {item.icon({
-            color: item.link.includes(pathname.split("/")[1])
+            color: item.link.includes("/" + pathname.split("/")[1])
               ? "staticWhite"
               : "labelNormal",
           })}
