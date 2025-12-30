@@ -41,7 +41,7 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
             docker volume create dauth || true
-            sudo chown -R $USER:$USER /var/lib/docker/volumes/dodam/_data/dgit
+            sudo chown -R $USER:$USER /var/lib/docker/volumes/dgit/_data
 
       - name: Setup SSH for rsync
         run: |
@@ -56,4 +56,4 @@ jobs:
             --rsync-path="sudo rsync" \
             -e "ssh -o StrictHostKeyChecking=no" \
             ./dist/ \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/lib/docker/volumes/dodam/_data/dgit
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/lib/docker/volumes/dgit/_data
