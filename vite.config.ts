@@ -14,20 +14,6 @@ export default defineConfig({
     react(),
     svgr(),
   ],
-  build: {
-    sourcemap: false,
-    minify: "esbuild",
-    rollupOptions: {
-      output: {
-        manualChunks(id: string | string[]) {
-          if (id.includes("node_modules")) {
-            return "vendor";
-          }
-        },
-      },
-      external: ["styled-components"],
-    },
-  },
   resolve: {
     //추가
     alias: [
