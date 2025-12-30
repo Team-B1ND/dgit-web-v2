@@ -12,20 +12,26 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(react-dom@18.3.1(react@18.3.1))
       '@b1nd/dds-web':
-        specifier: ^0.2.5
-        version: 0.2.5(react-dom@18.3.1(react@18.3.1))(rollup@4.53.3)(typescript@5.6.3)
+        specifier: ^0.2.6
+        version: 0.2.6(react-dom@18.3.1(react@18.3.1))(rollup@4.53.3)(typescript@5.6.3)
       '@tanstack/react-query':
         specifier: ^5.90.12
         version: 5.90.12(react@18.3.1)
       '@tanstack/react-router':
         specifier: ^1.140.1
         version: 1.140.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/js-cookie':
+        specifier: ^3.0.6
+        version: 3.0.6
       '@vitejs/plugin-react-swc':
         specifier: ^4.2.2
         version: 4.2.2(vite@6.4.1(@types/node@22.19.2)(tsx@4.21.0))
       axios:
         specifier: ^1.7.7
         version: 1.13.2
+      js-cookie:
+        specifier: ^3.0.5
+        version: 3.0.5
       path:
         specifier: ^0.12.7
         version: 0.12.7
@@ -38,6 +44,9 @@ importers:
       styled-components:
         specifier: ^6.1.19
         version: 6.1.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      vite-plugin-svgr:
+        specifier: ^4.5.0
+        version: 4.5.0(rollup@4.53.3)(typescript@5.6.3)(vite@6.4.1(@types/node@22.19.2)(tsx@4.21.0))
       zustand:
         specifier: ^5.0.9
         version: 5.0.9(@types/react@18.3.27)(react@18.3.1)(use-sync-external-store@1.6.0(react@18.3.1))
@@ -93,8 +102,8 @@ packages:
   '@b1nd/b1nd-toastify@2.0.1':
     resolution: {integrity: sha512-V9St3lTefi2vFHCpbkSWbrH9AtjmUcxyR90akFNlchH+AymxTpkdzWRfW2hOEIVgAYjG7VGJqy9pTotfuiaSCQ==}
 
-  '@b1nd/dds-web@0.2.5':
-    resolution: {integrity: sha512-MkeZ1BU3I2isbbPVjSOgwjWsmjYv1ghimPGZLaO4uFhDsVtaD71y2hLhTL2lwFw0IenQYW5yDnQZBz0gq4at1w==}
+  '@b1nd/dds-web@0.2.6':
+    resolution: {integrity: sha512-skLhNUjRz0t06C9138AxYk5jom4lBnl7aiQXg60QxVF0DiK6kdK7zyQB6URl21FSNlcXPb4mTT4ONiOXKGldAw==}
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -1602,6 +1611,9 @@ packages:
     peerDependencies:
       '@types/react': '*'
 
+  '@types/js-cookie@3.0.6':
+    resolution: {integrity: sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==}
+
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
@@ -2207,6 +2219,10 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
+  js-cookie@3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
+
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -2648,6 +2664,11 @@ packages:
   util@0.10.4:
     resolution: {integrity: sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==}
 
+  vite-plugin-svgr@4.5.0:
+    resolution: {integrity: sha512-W+uoSpmVkSmNOGPSsDCWVW/DDAyv+9fap9AZXBvWiQqrboJ08j2vh0tFxTD/LjwqwAd3yYSVJgm54S/1GhbdnA==}
+    peerDependencies:
+      vite: '>=2.6.0'
+
   vite@6.4.1:
     resolution: {integrity: sha512-+Oxm7q9hDoLMyJOYfUYBuHQo+dkAloi33apOPP56pzj+vsdJDzr+j1NISE5pyaAuKL4A3UD34qd0lx5+kfKp2g==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
@@ -2738,7 +2759,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@b1nd/dds-web@0.2.5(react-dom@18.3.1(react@18.3.1))(rollup@4.53.3)(typescript@5.6.3)':
+  '@b1nd/dds-web@0.2.6(react-dom@18.3.1(react@18.3.1))(rollup@4.53.3)(typescript@5.6.3)':
     dependencies:
       '@rollup/plugin-image': 3.0.3(rollup@4.53.3)
       '@rollup/plugin-replace': 6.0.3(rollup@4.53.3)
@@ -4193,6 +4214,8 @@ snapshots:
       '@types/react': 18.3.27
       hoist-non-react-statics: 3.3.2
 
+  '@types/js-cookie@3.0.6': {}
+
   '@types/json-schema@7.0.15': {}
 
   '@types/node@22.19.2':
@@ -4905,6 +4928,8 @@ snapshots:
 
   isexe@2.0.0: {}
 
+  js-cookie@3.0.5: {}
+
   js-tokens@4.0.0: {}
 
   js-yaml@4.1.1:
@@ -5326,6 +5351,17 @@ snapshots:
   util@0.10.4:
     dependencies:
       inherits: 2.0.3
+
+  vite-plugin-svgr@4.5.0(rollup@4.53.3)(typescript@5.6.3)(vite@6.4.1(@types/node@22.19.2)(tsx@4.21.0)):
+    dependencies:
+      '@rollup/pluginutils': 5.3.0(rollup@4.53.3)
+      '@svgr/core': 8.1.0(typescript@5.6.3)
+      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.6.3))
+      vite: 6.4.1(@types/node@22.19.2)(tsx@4.21.0)
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+      - typescript
 
   vite@6.4.1(@types/node@22.19.2)(tsx@4.21.0):
     dependencies:
