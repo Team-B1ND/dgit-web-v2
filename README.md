@@ -1,62 +1,15 @@
-# react-typescript-vite-bolierplate
+### DGIT은 대구소프트웨어고등학교 학생들의 Github 기여도를 표시하는 서비스입니다.
 
-CRA를 사용하지 않고 React + TypeScript + vite 환경을 위한 bolierplate입니다.
+> 학생들의 더 나은 개발 문화 및 동기부여의 목적으로 제작되었습니다😊
 
-이 bolierplate는 대표적으로 다음을 지원합니다.
+### 안내사항
 
-- `JavaScript` 과 `TypeScript`
-  (`jsx`, `tsx`, `js`, `ts`)
+> - 대구소프트웨어마이스터고등학교 **재학생** 또는 **졸업생** 대상입니다.
+> - 비공개 저장소를 기여도로 표시하면 모든 기여도를 확인할 수 있습니다. (Github 설정)
+> - 주간 기여도는 **일요일**부터 **토요일**까지의 기여도가 집계된 것입니다.
+> - 레포지토리는 관리자에 의해 등록 승인됩니다.
+> - 에러 또는 개선사항은 해당 저장소의 [이슈](https://github.com/Team-B1ND/dgit-web-v2/issues)에 기재해 주세요
+> - 사용자 정보 삭제는 [제작자 이메일](pjmin0923@gmail.com)에게 연락해 주세요
 
-- `` 
-- `vite-dev-server`
-
-
-# How to use
-- 기본적으로 vite 과 axios 설정이 되어 있습니다.
-install
-
-```
-npm install
-# or
-yarn install 
-# or 
-pnpm install
-```
-
-start
-```
-npm run dev
-# or
-yarn run dev
-# or 
-pnpm run dev
-```
-
-
-# Folder Architecture
-```
-├─public
-└─src
-    ├─api               # API 관련 파일들
-    ├─assets            # 이미지, 폰트 등 정적 파일
-    ├─components        # UI 컴포넌트들
-    ├─config            # 설정 파일 (config.json)
-    ├─constants         # 상수 파일들
-    │   └─token         # 토큰 관련 상수
-    │      └─token.constants.ts
-    ├─hooks             # 커스텀 훅
-    ├─libs              # 라이브러리 및 헬퍼 함수
-    │   └─axios         # Axios 관련 설정
-    │      ├─customAxios.ts
-    │      ├─requestInterceptor.ts
-    │      └─responseInterceptor.ts
-    │   └─token         # 토큰 관련 설정
-    │      └─token.ts
-    ├─pages             # 페이지 컴포넌트들
-    ├─queries           # React Query 관련 파일들
-    ├─styles            # CSS/SCSS 파일들
-    ├─types             # 타입 정의
-    └─utils             # 유틸리티 함수들
-├─vite.config.ts   # Vite 기본 설정
-
-```
+### 데이터 동기화
+> 데이터는 **한시간에 한번** 동기화됩니다. ( 23 ~ 7시에는 동기화되지 않습니다. )
