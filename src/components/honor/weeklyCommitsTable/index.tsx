@@ -1,3 +1,4 @@
+import Avatar from "@src/components/common/avatar";
 import Table from "@src/components/common/table";
 import { WEEKLY_COMMITS_TABLE } from "@src/constants/honor/honor.constant";
 import { useGetWeeklyCommits } from "@src/queries/honor/honor.queries"
@@ -7,16 +8,16 @@ const WeeklyCommitsTable = () => {
   return (
     <Table
       keys={WEEKLY_COMMITS_TABLE}
-      data={data.data.content.map(item => [
+      data={data.data.content.map((item) => [
         item.weekStart,
         item.weekCommits,
-        item.avatarUrl,
+        <Avatar url={item.avatarUrl} size="28px" />,
         item.githubName,
         item.name,
-        item.bio
+        item.bio,
       ])}
     />
-  )
+  );
 }
 
 export default WeeklyCommitsTable

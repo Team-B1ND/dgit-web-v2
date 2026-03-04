@@ -7,6 +7,7 @@ export const WeeklyCommitsRankerContainer = styled.div`
   gap: 12px;
   width: 100%;
   height: 280px;
+  min-height: 280px;
 `
 
 export const WeeklyCommitsRankerItem = styled.div<{
