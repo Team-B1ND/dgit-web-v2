@@ -1,4 +1,5 @@
 import Avatar from "@src/components/common/avatar";
+import GithubLink from "@src/components/common/githubLink";
 import Table from "@src/components/common/table";
 import { WEEKLY_COMMITS_TABLE } from "@src/constants/honor/honor.constant";
 import { useGetWeeklyCommits } from "@src/queries/honor/honor.queries"
@@ -12,7 +13,7 @@ const WeeklyCommitsTable = () => {
         item.weekStart,
         item.weekCommits,
         <Avatar url={item.avatarUrl} size="28px" />,
-        item.githubName,
+        <GithubLink username={item.githubName}/>,
         item.name,
         item.bio,
       ])}
