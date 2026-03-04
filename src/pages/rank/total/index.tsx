@@ -1,4 +1,5 @@
 import Avatar from "@src/components/common/avatar";
+import GithubLink from "@src/components/common/githubLink";
 import Table from "@src/components/common/table";
 import CustomText from "@src/components/rank/customText";
 import { TOTAL_RANK_TABLE } from "@src/constants/rank/rank.constant";
@@ -14,7 +15,7 @@ const TotalRank = () => {
         <CustomText text={item.level.toString()} color="primaryNormal" weight="Bold" />,
         <CustomText text={item.totalCommits.toString()} color="primaryNormal" weight="Bold" />,
         <Avatar url={item.avatarUrl} size="28px" />,
-        item.username,
+        <GithubLink username={item.username}/>,
         item.name,
         item.bio,
       ])}

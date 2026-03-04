@@ -14,8 +14,8 @@ const CommitRank = () => {
         <CustomText text={"#" + item.rank} color="primaryNormal" weight="Bold" />,
         <CustomText text={item.totalCommits.toString()} color="primaryNormal" weight="Bold" />,
         <Avatar url={item.avatarUrl} size="28px" />,
-        item.username,
-        <GithubLink username={item.name}/>,
+        <GithubLink username={item.username}/>,
+        item.name,
         item.bio,
       ])}
     />
